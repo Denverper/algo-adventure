@@ -1,5 +1,6 @@
 // App.js
 import React, { useState } from "react";
+import Confetti from 'react-confetti-boom';
 
 import "./App.css";
 
@@ -10,9 +11,29 @@ function App() {
     common: { tasks: ["Scan card at 379", "Write name on paper at the printer outside of the Innovation Labs on floor 1", "Scan card at 279 "], count: 2 }
   }
 
+  const groupTasks = [
+    { room: 'ECS 301', task: 'Coding Problem' },
+    { room: 'ECS 410', task: 'Build a Slingshot!' },
+    { room: 'ECS 310', task: 'Logic Puzzle' },
+  ];
+
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  const handleCompletion = () => {
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 10000);
+  };
+
   const [selectedTasks, setSelectedTasks] = useState({});
 
   const getRandomTasks = () => {
+    const checkboxes = document.querySelectorAll('.task-checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = false;
+    });
+
     const newSelectedTasks = {};
     for (const category in taskLists) {
       const numTasksNeeded = taskLists[category].count;
@@ -40,6 +61,7 @@ function App() {
       const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
       if (allChecked) {
         completionMessage.classList.remove('hidden');
+        handleCompletion();
       } else {
         completionMessage.classList.add('hidden');
       }
@@ -54,10 +76,13 @@ function App() {
         checkbox.removeEventListener('change', handleCheckboxChange);
       });
     };
-  }, [selectedTasks]);
+  }, [selectedTasks, showConfetti]);
  
   return (
-    <div className="min-h-screen px-2 py-10 flex flex-col items-center justify-center bg-gray-100">
+    <div className="min-h-screen px-2 py-20 flex flex-col flex-auto items-center justify-center bg-gray-100">
+      { showConfetti &&
+          <Confetti mode="fall" effectInterval={10000} particleCount={500} colors={['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']}/>
+      }
       <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Algo. Adventures Task Checklist</h1>
       <button
         onClick={getRandomTasks}
@@ -67,14 +92,15 @@ function App() {
       </button>
 
       <div id="taskContainer" className="mt-6 mr-4 ml-4 bg-white p-4 rounded-lg shadow-md shadow-purple-300 items-center justify-center">
+        <h2 className="text-xl font-semibold mb-2 text-gray-800 capitalize">Individual Tasks:</h2>
+
         {Object.keys(selectedTasks).length > 0 ? (
           <>
             {Object.entries(selectedTasks).map(([category, tasks]) => (
-              <div key={category} className="mb-4">
-                <h2 className="text-xl font-semibold text-gray-800 capitalize">{category}</h2>
+              <div key={category}>
                 {tasks.map((task, index) => (
-                  <div key={index} className="task-item flex items-center mb-2">
-                    <input type="checkbox" id={`${category}-${index}`} className="mr-2 task-checkbox"/>
+                  <div key={index} className="task-item flex items-center mb-3">
+                    <input type="checkbox" id={`${category}-${index}`} className="mr-2 task-checkbox "/>
                     <label htmlFor={`${category}-${index}`} className="text-gray-700">
                       {task}
                     </label>
@@ -85,8 +111,20 @@ function App() {
             <p id="completionMessage" className="text-green-500 font-bold mt-4 hidden">Good job! Find an officer to verify!</p>
           </>
         ) : (
-          <p className="text-gray-500">Click "Generate Tasks" to see your checklist!</p>
+          <p className="text-gray-500">Click "Generate Tasks" to see your individual checklist!</p>
         )}
+      </div>
+      <div id="groupTasksContainer" className="mt-6 mr-4 ml-4 bg-white p-4 rounded-lg shadow-md shadow-purple-300 items-center justify-center">
+        <h2 className="text-xl font-semibold mb-2 text-gray-800 capitalize">Group Tasks:</h2>
+        {groupTasks.map((task, index) => (
+          <div key={index} className="task-item flex items-center mb-2">
+            <span className="mr-2 text-gray-700">{task.room}:</span>
+            <span className="text-gray-700">{task.task}</span>
+          </div>
+        ))}
+      </div>
+      <div>
+        <p className="text-gray-500 mt-4 text-center">Please complete all tasks to help crewmates win! 🎉📮</p>
       </div>
     </div>
   );
