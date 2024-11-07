@@ -57,8 +57,8 @@ function App() {
   }, [selectedTasks]);
  
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h1 className="text-3xl font-bold mb-4 text-gray-800">Algo. Adventures Task Checklist</h1>
+    <div className="min-h-screen px-12 py-12 flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Algo. Adventures Task Checklist</h1>
       <button
         onClick={getRandomTasks}
         className="px-4 py-2 bg-purple-500 text-white font-semibold rounded hover:bg-green-600 transition duration-300"
@@ -66,7 +66,7 @@ function App() {
         {Object.keys(selectedTasks).length === 0 ? "Generate Tasks" : "Get New Tasks! (Restart 💀)"} 
       </button>
 
-      <div id="taskContainer" className="mt-6 mr-12 ml-12 bg-white p-4 rounded shadow-md">
+      <div id="taskContainer" className="mt-6 mr-12 ml-12 bg-white p-4 rounded shadow-md items-center justify-center">
         {Object.keys(selectedTasks).length > 0 ? (
           <>
             {Object.entries(selectedTasks).map(([category, tasks]) => (
