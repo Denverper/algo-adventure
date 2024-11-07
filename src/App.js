@@ -12,9 +12,10 @@ function App() {
   }
 
   const groupTasks = [
-    { room: 'ECS 301', task: 'Coding Problem' },
-    { room: 'ECS 410', task: 'Build a Slingshot!' },
-    { room: 'ECS 310', task: 'Logic Puzzle' },
+    { room: 'ECS 257', task: 'Pentominos & Parentheses' },
+    { room: 'ECS 300', task: 'Coloring and Coding Task!' },
+    { room: 'ECS 400', task: 'Parking Spots & Prefixes' },
+    { room: 'ECS 401', task: 'Build a Slingshot!' },
   ];
 
   const [showConfetti, setShowConfetti] = useState(false);
@@ -83,7 +84,7 @@ function App() {
       { showConfetti &&
           <Confetti mode="fall" effectInterval={10000} particleCount={500} colors={['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']}/>
       }
-      <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Algo. Adventures Task Checklist</h1>
+      <h1 className="text-3xl font-bold text-gray-800 text-center">Algo. Adventures Task Checklist</h1>
       {Object.keys(selectedTasks).length === 0 && (
       <button
         onClick={getRandomTasks}
@@ -91,6 +92,10 @@ function App() {
       >
         {"Generate Tasks"} 
       </button> )}
+
+      <div id="groupTasksContainer" className="mt-6 mr-4 ml-4 bg-white p-4 rounded-lg shadow-md shadow-green-300 items-center justify-center">
+        <h2 className="text-xl font-semibold mb-2 text-gray-800 capitalize">Meeting Room: ECS 357</h2>
+      </div>
 
       <div id="taskContainer" className="mt-6 mr-4 ml-4 bg-white p-4 rounded-lg shadow-md shadow-purple-300 items-center justify-center">
         <h2 className="text-xl font-semibold mb-2 text-gray-800 capitalize">Individual Tasks:</h2>
