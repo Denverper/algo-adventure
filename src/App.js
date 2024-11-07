@@ -8,7 +8,7 @@ function App() {
   const taskLists = {
     long: { tasks: ["Find Denver and tell him a joke.", "Write numbers 1 - 50 at the white board of the fourth floor kitchen", "Sort by suit and number deck of cards at the fifth floor - take a picture and shuffle after.", "Solve a maze at 2nd floor bulletin board", "Where is waldo at the 4th floor stairwell near kitchen", "Spot the difference at the 3rd floor stairwell near kitchen", "Origami at the second floor kitchen", "Solve math problem  in the third floor kitchen"], count: 3 },
     short: { tasks: ["Spin the gear at the lobby of second floor.", "Record what the temperature it is at the lobby", "Fill out questionnaire in front of Dr. Roszelle’s office", "Find the raccoon plushie within the third floor - take a picture and hide it again of floor 3!", "Hopscotch at 4th floor", "Open / close windows at the third floor kitchen", "Simplify math problem at the second floor kitchen", "Draw a picture of a raccoon in second floor kitchen", "Color a picture in the third floor tables", "Correctly place three jigsaw puzzle pieces at the thrid floor kitchen"], count: 3 },
-    common: { tasks: ["Scan school id at 379", "Write name on paper at the printer outside of the Innovation Labs on the first floor", "Scan school id 279 "], count: 2 }
+    common: { tasks: ["Scan DU ID at 379", "Write name on paper at the printer outside of the Innovation Labs on the first floor", "Scan DU ID 279 "], count: 2 }
   }
 
   const groupTasks = [
@@ -84,12 +84,13 @@ function App() {
           <Confetti mode="fall" effectInterval={10000} particleCount={500} colors={['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']}/>
       }
       <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Algo. Adventures Task Checklist</h1>
+      {Object.keys(selectedTasks).length === 0 && (
       <button
         onClick={getRandomTasks}
         className="px-4 py-2 bg-purple-500 text-white font-semibold rounded hover:bg-green-600 transition duration-300"
       >
-        {Object.keys(selectedTasks).length === 0 ? "Generate Tasks" : "Get New Tasks! (Restart 💀)"} 
-      </button>
+        {"Generate Tasks"} 
+      </button> )}
 
       <div id="taskContainer" className="mt-6 mr-4 ml-4 bg-white p-4 rounded-lg shadow-md shadow-purple-300 items-center justify-center">
         <h2 className="text-xl font-semibold mb-2 text-gray-800 capitalize">Individual Tasks:</h2>
