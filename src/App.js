@@ -5,11 +5,11 @@ import Confetti from 'react-confetti-boom';
 import "./App.css";
 
 function App() {
-  const taskLists = {
-    long: { tasks: ["Find Denver and tell him a joke.", "Write numbers 1 - 50 at the white board of the fourth floor kitchen", "Sort by suit and number deck of cards at the fifth floor - take a picture and shuffle after.", "Solve a maze at 2nd floor bulletin board", "Where is waldo at the 4th floor stairwell near kitchen", "Spot the difference at the 3rd floor stairwell near kitchen", "Origami at the second floor kitchen", "Solve math problem  in the third floor kitchen"], count: 3 },
-    short: { tasks: ["Spin the gear at the lobby of second floor.", "Record what the temperature it is at the lobby", "Fill out questionnaire in front of Dr. Roszelle’s office", "Find the raccoon plushie within the third floor - take a picture and hide it again of floor 3!", "Hopscotch at 4th floor", "Open / close windows at the third floor kitchen", "Simplify math problem at the second floor kitchen", "Draw a picture of a raccoon in second floor kitchen", "Color a picture in the third floor tables", "Correctly place three jigsaw puzzle pieces at the thrid floor kitchen"], count: 3 },
-    common: { tasks: ["Scan DU ID at 379", "Write name on paper at the printer outside of the Innovation Labs on the first floor", "Scan DU ID 279 "], count: 2 }
-  }
+    const taskLists = {
+      long: { tasks: ["Find Denver and tell him a joke.", "Write numbers 1 - 50 at the white board of the fourth floor kitchen", "Sort by suit and number deck of cards at the fifth floor - take a picture and shuffle after.", "Solve a maze at 2nd floor bulletin board", "Where is waldo at the 3rd floor stairwell near kitchen", "Spot the difference at the 4th floor stairwell near kitchen", "Origami at the second floor kitchen", "Solve math problem in the third floor kitchen and - take picture and erase it after!"], count: 3 },
+      short: { tasks: ["Spin the gear at the lobby of second floor.", "Record what the temperature it is at the lobby", "Fill out questionnaire in front of Dr. Roszelle’s office", "Find the raccoon plushie within the third floor - take a picture and hide it again of floor 3!", "Hopscotch at 4th floor", "Open / close windows at the third floor kitchen", "Simplify math problem at the second floor kitchen", "Draw a picture of a raccoon in second floor kitchen", "Color a picture in the third floor tables", "Correctly place three jigsaw puzzle pieces at the thrid floor kitchen"], count: 3 },
+      common: { tasks: ["Scan DU ID at 379", "Write name on paper at the printer outside of the Innovation Labs on the first floor", "Scan DU ID 279 "], count: 2 }
+    }
 
   const groupTasks = [
     { room: 'ECS 257', task: 'Pentominos & Parentheses' },
